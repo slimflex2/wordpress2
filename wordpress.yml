@@ -11,3 +11,13 @@
 
 - name: move wordpress
   shell: rsync -r /var/www/html/wordpress/* /var/www/html/
+
+
+
+- name: change file ownership
+  file:
+    path: /var/www/html
+    owner: apache
+    group: apache
+    state: directory 
+    recurse: yes
