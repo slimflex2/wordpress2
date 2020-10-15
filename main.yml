@@ -1,0 +1,32 @@
+- hosts: web
+  tasks:
+
+  - name: install wget
+    yum:
+      name: 
+       - wget
+       - vim
+       - epel-release
+       - unzip
+    register: yum 
+  - name: disable selinux
+    selinux:
+      state: disabled
+    register: selinux
+
+  - debug: 
+      msg: "{{ yum }}"
+
+  - name: reboot
+    reboot:
+      reboot_timeout: 0
+    when: yum.changed or selinux.changed
+
+  - name: 
+    include_tasks: php.yml
+
+  - name:
+    include_tasks: httpd.yml
+
+  - name:
+    include_tasks: wordpress.yml

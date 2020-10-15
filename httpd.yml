@@ -1,0 +1,13 @@
+- name: install httpd
+  yum:
+    name: httpd
+
+- name: start httpd
+  service: 
+    name: httpd
+    state: started
+
+- name: enable httpd
+  service: 
+    name: httpd
+    enabled: yes

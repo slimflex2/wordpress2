@@ -1,0 +1,13 @@
+- name: install REMI
+  yum:
+    name: http://rpms.remirepo.net/enterprise/remi-release-7.rpm
+
+- name: enable php.7.3
+  shell: 	yum-config-manager --enable remi-php72
+
+
+- name: istall php
+  yum:
+    name: 
+    - php
+    - php-mysql

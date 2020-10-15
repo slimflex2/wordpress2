@@ -1,0 +1,13 @@
+- name: download wordpress
+  get_url:
+    url: https://wordpress.org/latest.zip
+    dest: /var/www/html
+
+- name: unzip wordpress
+  unarchive:
+    src: /var/www/html/wordpress-5.5.1.zip
+    dest: /var/www/html/
+    remote_src: yes
+
+- name: move wordpress
+  shell: rsync -r /var/www/html/wordpress/* /var/www/html/
